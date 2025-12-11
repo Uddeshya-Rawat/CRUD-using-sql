@@ -1,8 +1,12 @@
 const express=require('express')
-const {PORT} = require('./config')
+const {CONFIG} = require('./config')
+const cors=require('cors')
+const routes= require('./routes')
 
 
 const app=express()
+app.use(express.json())
+
 
 
 app.get('/health',(req,res)=>{
@@ -11,7 +15,8 @@ app.get('/health',(req,res)=>{
         "timestamp":new Date()
     })
 })
-console.log(PORT)
-app.listen(PORT,()=>{
-    console.log(`server running on http:localhost://${PORT}`)
+
+app.use('/api',routes)
+app.listen(CONFIG.PORT,()=>{
+    console.log(`server running on http://localhost:${CONFIG.PORT}`)
 })
