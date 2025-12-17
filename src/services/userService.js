@@ -13,6 +13,16 @@ async function createUser(data){
     }
 }
 
+async function getUsers(){
+    try {
+        const response = await userModel.showUser()
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports={
-    createUser
+    createUser,
+    getUsers
 }

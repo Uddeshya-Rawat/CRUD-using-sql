@@ -19,6 +19,21 @@ async function createUser(req,res){
     }
 }
 
+async function getUsers(req,res){
+    try {
+        const response = await userServices.getUsers()
+        if(response){
+            return res.status(200).json({
+                "error":false,
+                "data":response
+            })
+        }
+    } catch (error) {
+        return error
+    }
+}
+
 module.exports={
-createUser
+createUser,
+getUsers
 }

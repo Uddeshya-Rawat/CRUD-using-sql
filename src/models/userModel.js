@@ -16,7 +16,9 @@ class usersModel{
     }
 
     async showUser(){
-        
+        const [row]= await DB.query(`select * from ${this.table}`)
+        console.log(row)
+        return row
     }
     
 }
