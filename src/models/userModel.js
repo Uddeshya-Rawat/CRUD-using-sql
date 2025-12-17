@@ -15,12 +15,27 @@ class usersModel{
 
     }
 
-    async showUser(){
+    async showUsers(){
         const [row]= await DB.query(`select * from ${this.table}`)
         console.log(row)
         return row
     }
+
+    async updateUser(id,data){
+        const [row] =await DB.query('update users SET name=? , email=? where id=?',[data.name,data.email,id])
+        console.log(row)
+        return row
+    }
+
+    async showSingleUser(id){
+        const [row]=await DB.query(`select * from ${this.table} where id=?`,[id])
+        return row
+    }
     
+    async deleteUser(id){
+        const [result]= await DB.query(`delete from ${this.table} where id=?`,[id])
+        return result
+    }
 }
 
 

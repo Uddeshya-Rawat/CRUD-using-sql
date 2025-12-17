@@ -15,14 +15,46 @@ async function createUser(data){
 
 async function getUsers(){
     try {
-        const response = await userModel.showUser()
+        const response = await userModel.showUsers()
         return response
     } catch (error) {
         return error
     }
 }
 
+async function getSingleUser(id){
+    try {
+        const response = await userModel.showSingleUser(id)
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
+async function updateUser(id,data){
+    try {
+        const response = await userModel.updateUser(id,data)
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
+async function deleteUser(id){
+    try {
+        const response = await userModel.deleteUser(id)
+        return response
+    } catch (error) {
+        return error
+    }
+}
+
+
+
 module.exports={
     createUser,
-    getUsers
+    getUsers,
+    getSingleUser,
+    updateUser,
+    deleteUser
 }
